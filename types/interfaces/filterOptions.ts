@@ -1,4 +1,9 @@
+export interface FilterOption {
+    enabled: boolean
+    order: 'ascending' | 'descending'
+}
+
 export interface FilterOptions {
-    date: { enabled: boolean, order: 'ascending' | 'descending' }
-    name: { enabled: boolean, order: 'ascending' | 'descending' }
+    date: FilterOption
+    name: FilterOption
 }
