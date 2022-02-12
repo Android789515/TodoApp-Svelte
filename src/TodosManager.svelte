@@ -27,7 +27,10 @@
     }
 
     const clearTodos = () => {
-        todos = todos.filter(todo => todo.text && !todo.isCompleted)
+        todos = todos.filter(todo => {
+            const todosToKeep = todo.text && !todo.isCompleted
+            return todosToKeep
+        })
     }
 
     const updateTodo = (id: string, whatToUpdate: updatableTodoData, newData: updatableTodoData) => {

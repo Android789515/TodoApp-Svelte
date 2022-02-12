@@ -11,14 +11,13 @@
 
 <style>
     :global(.popout) {
-        /* Old color - #b3ad00 */
-        --dark-border: #f7ef00;
+        --dark-border: #b3ad00;
         --light-bg: #fff700;
 
         padding-left: .125em;
         background: var(--light-bg);
         border-bottom: solid var(--dark-border) 2px;
-        border-left: solid var(--dark-border) 4px;
+        border-left: solid var(--dark-border) 3px;
         border-radius: 0;
     }
 
@@ -29,7 +28,7 @@
         grid-template-columns: var(--side-space) auto var(--side-space);
         justify-content: center;
 
-        max-width: 623px;
+        max-width: 38.9375em;
 
         padding-top: 5em;
         margin: auto;

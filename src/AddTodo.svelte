@@ -3,6 +3,8 @@
 
     let text = ''
 
+    const clearText = () => text = ''
+
     const handleKeyDown = (event: KeyboardEvent) => {
         const { key: keyPressed } = event
 
@@ -11,17 +13,17 @@
             if (text) {
                 createTodo(text)
             }
-            text = ''
+            clearText()
         }
     }
 </script>
 
 <div class='add-todo'>
     <input
-            type='text'
-            placeholder='Enter a todo'
-            bind:value={text}
-            on:keydown={handleKeyDown}
+        type='text'
+        placeholder='Enter a todo'
+        bind:value={text}
+        on:keydown={handleKeyDown}
     >
 </div>
 

@@ -1,6 +1,6 @@
 <script lang='ts'>
-    import type { updatableTodoData } from '../types/updatableTodoData'
     import { afterUpdate } from 'svelte'
+    import type { updatableTodoData } from '../types/updatableTodoData'
 
     export let id
     export let text
@@ -23,10 +23,11 @@
         updateTodo(id, todoData.text, text)
     }
 
-    afterUpdate(() => setTimeout(clearTodos, 2500))
+    const afterTwoSeconds = 2400
+    afterUpdate(() => setTimeout(clearTodos, afterTwoSeconds))
 </script>
 
-<div class:completed={isCompleted}>
+<div class='todo' class:completed={isCompleted}>
     <input
         type='checkbox'
         class='checkbox popout clickable'
@@ -44,6 +45,7 @@
 </div>
 
 <style>
+/* Keeps brs from showing up in the to-do */
     br {
         display: none;
     }
@@ -66,13 +68,12 @@
     }
 
     .checkbox:checked {
-        /* Old color - #0b3366 */
-        --custom-border: #1665cc;
+        --custom-border: #0b3366;
         --custom-bg: #1a73e8;
 
         background: var(--custom-bg);
         border-bottom: solid var(--custom-border) 2px;
-        border-left: solid var(--custom-border) 4px;
+        border-left: solid var(--custom-border) 3px;
     }
     .checkbox:checked::after {
         content: '✔';
