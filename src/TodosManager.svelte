@@ -5,18 +5,41 @@
     import type { updatableTodoData } from '../types/updatableTodoData'
     import type { Todo } from '../types/interfaces/todoInterface'
     import type { FilterOption, FilterOptions } from '../types/interfaces/filterOptions'
+    import { filterOrders } from '../types/interfaces/filterOptions'
 
     import Todos from './Todos.svelte'
     import AddTodo from './AddTodo.svelte'
 
     let todos: Todo[] = []
+
+    const { ascending, descending } = filterOrders
     let filterOptions: FilterOptions = {
-        date: { enabled: true, order: 'descending' },
-        name: { enabled: false, order: 'descending' }
+        date: { enabled: true, order: descending },
+        name: { enabled: false, order: descending }
     }
 
     const flipOrder = (filterOption: FilterOption) => {
+        const currentOrder = filterOptions[filterOption].order
+        filterOptions = {
+            ...filterOptions,
+            [filterOption]: currentOrder === descending ? ascending : descending
+        }
+    }
 
+    const filterByDate = () => {
+        const { date, name } = filterOptions
+        filterOptions = {
+            date: { ...date, enabled: true },
+            name: { ...name, enabled: false }
+        }
+    }
+
+    const filterByName = () => {
+        const { date, name } = filterOptions
+        filterOptions = {
+            date: { ...date, enabled: false },
+            name: { ...name, enabled: true }
+        }
     }
 
     const loadTodos = () => {
@@ -64,6 +87,8 @@
 </script>
 
 <div class='todos-manager'>
+
+
     <Todos {todos} {clearTodos} {updateTodo} />
 
     <AddTodo {createTodo} />
