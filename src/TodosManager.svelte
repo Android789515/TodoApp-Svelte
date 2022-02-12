@@ -3,7 +3,7 @@
     import { v4 as uuid } from 'uuid'
 
     import type { updatableTodoData } from '../types/updatableTodoData'
-    import type { Todo } from '../interfaces/todoInterface'
+    import type { Todo } from '../types/interfaces/todoInterface'
 
     import Todos from './Todos.svelte'
     import AddTodo from './AddTodo.svelte'
@@ -23,7 +23,12 @@
     }
 
     const createTodo = (text: string) => {
-        todos = [...todos, { id: uuid(), text, isCompleted: false }]
+        todos = [...todos, {
+            id: uuid(),
+            text,
+            isCompleted: false,
+            dateCreated: new Date()
+        }]
     }
 
     const clearTodos = () => {
