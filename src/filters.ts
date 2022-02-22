@@ -5,14 +5,14 @@ enum filterOrders {
     descending = 'descending'
 }
 
-export interface TodoFilter {
+export interface Filters {
     date: boolean
     name: boolean
     order: filterOrders.ascending | filterOrders.descending
 }
 
 const createTodoFilter = () => {
-    const internalState = writable<TodoFilter>({
+    const internalState = writable<Filters>({
         date: true,
         name: false,
         order: filterOrders.descending

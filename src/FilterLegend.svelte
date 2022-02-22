@@ -1,5 +1,5 @@
 <script lang='ts'>
-    import { todoFilter } from '../stores/todoFilter'
+    import { todoFilter } from './filters'
 
 
 </script>
