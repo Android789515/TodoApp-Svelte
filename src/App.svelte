@@ -1,6 +1,6 @@
 <script lang='ts'>
-    import AppTitle from './AppTitle.svelte'
-    import TodosManager from './TodosManager.svelte'
+    import AppTitle from './componrnets/AppTitle.svelte'
+    import TodosManager from './componrnets/TodosManager.svelte'
 </script>
 
 <main class='app'>

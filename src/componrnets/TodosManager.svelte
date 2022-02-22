@@ -2,8 +2,7 @@
     import { afterUpdate, onMount } from 'svelte'
     import { v4 as uuid } from 'uuid'
 
-    import type { updatableTodoData } from '../types/updatableTodoData'
-    import type { Todo } from '../interfaces/todoInterface'
+    import type { Todo, updatableTodoData } from '../types'
 
     import Todos from './Todos.svelte'
     import AddTodo from './AddTodo.svelte'
