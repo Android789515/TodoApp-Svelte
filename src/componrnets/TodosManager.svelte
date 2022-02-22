@@ -2,12 +2,10 @@
     import { afterUpdate, onMount } from 'svelte'
     import { v4 as uuid } from 'uuid'
 
-    import type { updatableTodoData } from '../types/updatableTodoData'
-    import type { Todo } from '../types/interfaces/todoInterface'
+    import type { Todo, updatableTodoData } from '../types'
 
     import Todos from './Todos.svelte'
     import AddTodo from './AddTodo.svelte'
-    import FilterLegend from './FilterLegend.svelte'
 
     let todos: Todo[] = []
 
@@ -24,12 +22,7 @@
     }
 
     const createTodo = (text: string) => {
-        todos = [...todos, {
-            id: uuid(),
-            text,
-            isCompleted: false,
-            dateCreated: new Date()
-        }]
+        todos = [...todos, { id: uuid(), text, isCompleted: false }]
     }
 
     const clearTodos = () => {
@@ -56,8 +49,6 @@
 </script>
 
 <div class='todos-manager'>
-    <FilterLegend />
-
     <Todos {todos} {clearTodos} {updateTodo} />
 
     <AddTodo {createTodo} />

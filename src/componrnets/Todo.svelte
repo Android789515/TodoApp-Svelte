@@ -1,6 +1,6 @@
 <script lang='ts'>
     import { afterUpdate } from 'svelte'
-    import type { updatableTodoData } from '../types/updatableTodoData'
+    import type { updatableTodoData } from '../types'
 
     export let id
     export let text

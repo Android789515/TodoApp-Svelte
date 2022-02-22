@@ -1,5 +1,5 @@
 <script lang='ts'>
-    import type { updatableTodoData } from '../types/updatableTodoData'
+    import type { updatableTodoData } from '../types'
 
     import Todo from './Todo.svelte'
 
