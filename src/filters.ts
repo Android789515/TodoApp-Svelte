@@ -1,4 +1,4 @@
-import { derived, writable } from 'svelte/store'
+import { writable } from 'svelte/store'
 
 enum filterOrders {
     ascending = 'ascending',
@@ -8,17 +8,16 @@ enum filterOrders {
 export interface Filters {
     date: boolean
     name: boolean
-    order: filterOrders.ascending | filterOrders.descending
+    order: filterOrders
 }
 
-const createTodoFilter = () => {
-    const internalState = writable<Filters>({
+const createFilters = () => {
+    const filters = writable<Filters>({
         date: true,
         name: false,
         order: filterOrders.descending
     })
-    const { subscribe, update } = internalState
-    const filters = derived(internalState, state => state)
+    const { subscribe, update } = filters
 
     const filterByDate = () => update(prevFilters => {
         return { ...prevFilters, date: true, name: false }
@@ -38,7 +37,6 @@ const createTodoFilter = () => {
     })
 
     return {
-        filters,
         subscribe,
         filterByName,
         filterByDate,
@@ -46,4 +44,4 @@ const createTodoFilter = () => {
     }
 }
 
-export const todoFilter = createTodoFilter()
+export const filters = createFilters()

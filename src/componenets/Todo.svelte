@@ -17,6 +17,9 @@
         todos.updateTodo(id, todoKeys.text, text)
     }
 
+    const setCursorAtEnd = () => {
+    }
+
     const afterTwoSeconds = 2400
     afterUpdate(() => setTimeout(todos.clearTodos, afterTwoSeconds))
 </script>
@@ -41,6 +44,7 @@
         aria-label='Editable todo text'
         role='textbox'
         on:input={updateText}
+        on:focus={setCursorAtEnd}
     >
         {text}
     </p>

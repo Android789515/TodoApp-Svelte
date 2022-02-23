@@ -1,11 +1,14 @@
 <script lang='ts'>
     import AppTitle from './componenets/AppTitle.svelte'
+    import FilterOptions from './componenets/FilterOptions.svelte'
     import Todos from './componenets/Todos.svelte'
     import AddTodo from './componenets/AddTodo.svelte'
 </script>
 
 <main class='app' aria-label='App' role='main'>
     <AppTitle />
+
+    <FilterOptions />
 
     <Todos />
 
