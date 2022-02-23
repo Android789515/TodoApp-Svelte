@@ -2,19 +2,19 @@
     import { afterUpdate } from 'svelte'
 
     import { todos } from '../todos'
-    import { todoKeys } from '../types'
+    import { TodoKeys } from '../types'
 
     export let id
     export let text
     export let isCompleted
 
     const toggleCompleted = () => {
-        todos.updateTodo(id, todoKeys.isCompleted, !isCompleted)
+        todos.updateTodo(id, TodoKeys.isCompleted, !isCompleted)
     }
 
     const updateText = (event: InputEvent) => {
         const { target: { textContent: text } } = event
-        todos.updateTodo(id, todoKeys.text, text)
+        todos.updateTodo(id, TodoKeys.text, text)
     }
 
     const setCursorAtEnd = ({ target: todoText }: { target: HTMLParagraphElement }) => {

@@ -1,6 +1,6 @@
 export type updatableTodoData = boolean | string
 
-export enum todoKeys {
+export enum TodoKeys {
     text = 'text',
     isCompleted = 'isCompleted'
 }

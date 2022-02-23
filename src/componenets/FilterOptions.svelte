@@ -1,24 +1,40 @@
 <script lang='ts'>
-    import { filters } from '../filters'
+    import { todos } from '../todos'
 
-    // Note that this is valid; the Svelte plugin
-    // for Webstorm is outdated.
-    $: ({ name, date, order } = $filters)
+    enum SortOrders {
+        ascending = 'Ascending',
+        descending = 'Descending'
+    }
+
+    let order = SortOrders.ascending
+
+    const sort = (sortFunc) => {
+        sortFunc()
+        // Sort will change order so this sets it back
+        if (order === SortOrders.descending) {
+            todos.flipOrder()
+        }
+    }
+
+    const setOrder = () => {
+        order = order === SortOrders.ascending ? SortOrders.descending : SortOrders.ascending
+        todos.flipOrder()
+    }
 </script>
 
 <h4>Sort by</h4>
 
 <ul class='unstyledUl filter-options' aria-label='Filter options' role='list'>
 
-    <li class='clickable' on:click={filters.filterByName}>
+    <li class='clickable' on:click={() => sort(todos.sortByName)}>
         Name
     </li>
 
-    <li class='clickable' on:click={filters.filterByDate}>
+    <li class='clickable' on:click={() => sort(todos.sortByDate)}>
         Date
     </li>
 
-    <li class='clickable' on:click={filters.flipOrder}>
+    <li class='clickable' on:click={setOrder}>
         Order: {order}
     </li>
 </ul>

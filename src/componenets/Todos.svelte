@@ -29,6 +29,8 @@
     {/if}
 </ul>
 
+<button on:click={() => localStorage.clear()}>Wipe local storage</button>
+
 <style>
     .todos {
         display: grid;
