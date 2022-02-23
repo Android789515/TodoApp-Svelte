@@ -22,9 +22,9 @@
     }
 </script>
 
-<h4>Sort by</h4>
+<h4 class='sort-by'>Sort by</h4>
 
-<ul class='unstyledUl filter-options' aria-label='Filter options' role='list'>
+<ul class='unstyledUl filter-options popout' aria-label='Filter options' role='list'>
 
     <li class='clickable' on:click={() => sort(todos.sortByName)}>
         Name
@@ -40,13 +40,17 @@
 </ul>
 
 <style>
+    .sort-by {
+        margin-bottom: .5em;
+    }
+
     .filter-options {
         list-style: none;
 
         display: flex;
         justify-content: space-between;
 
-        padding: 0;
+        padding: .25em .5em;
         margin-bottom: 2em;
     }
 </style>
