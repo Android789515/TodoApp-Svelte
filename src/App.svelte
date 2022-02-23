@@ -1,12 +1,15 @@
 <script lang='ts'>
-    import AppTitle from './componrnets/AppTitle.svelte'
-    import TodosManager from './componrnets/TodosManager.svelte'
+    import AppTitle from './componenets/AppTitle.svelte'
+    import Todos from './componenets/Todos.svelte'
+    import AddTodo from './componenets/AddTodo.svelte'
 </script>
 
-<main class='app'>
+<main class='app' aria-label='App' role='main'>
     <AppTitle />
 
-    <TodosManager />
+    <Todos />
+
+    <AddTodo />
 </main>
 
 <style>

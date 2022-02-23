@@ -1,5 +1,5 @@
 <script lang='ts'>
-    export let createTodo
+    import { todos } from '../todos'
 
     let text = ''
 
@@ -11,7 +11,7 @@
         const enterKey = 'Enter'
         if (keyPressed === enterKey) {
             if (text) {
-                createTodo(text)
+                todos.addTodo(text)
             }
             clearText()
         }
@@ -22,6 +22,8 @@
     <input
         type='text'
         placeholder='Enter a todo'
+        aria-label='Enter a todo'
+        role='textbox'
         bind:value={text}
         on:keydown={handleKeyDown}
     >

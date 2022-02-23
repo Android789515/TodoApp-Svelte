@@ -1,36 +1,36 @@
 <script lang='ts'>
     import { afterUpdate } from 'svelte'
-    import type { updatableTodoData } from '../types'
+
+    import { todos } from '../todos'
+    import { todoKeys } from '../types'
 
     export let id
     export let text
     export let isCompleted
-    export let clearTodos: () => void
-    export let updateTodo: (id: string, whatToUpdate: updatableTodoData, newData: updatableTodoData) => void
-
-    const todoData =  {
-        id: 'id',
-        text: 'text',
-        isCompleted: 'isCompleted'
-    }
 
     const toggleCompleted = () => {
-        updateTodo(id, todoData.isCompleted, !isCompleted)
+        todos.updateTodo(id, todoKeys.isCompleted, !isCompleted)
     }
 
     const updateText = (event: InputEvent) => {
         const { target: { textContent: text } } = event
-        updateTodo(id, todoData.text, text)
+        todos.updateTodo(id, todoKeys.text, text)
     }
 
     const afterTwoSeconds = 2400
-    afterUpdate(() => setTimeout(clearTodos, afterTwoSeconds))
+    afterUpdate(() => setTimeout(todos.clearTodos, afterTwoSeconds))
 </script>
 
-<div class='todo' class:completed={isCompleted}>
+<li
+    class='todo'
+    class:completed={isCompleted}
+    aria-label='Todo'
+    role='listitem'
+>
     <input
-        type='checkbox'
         class='checkbox popout clickable'
+        type='checkbox'
+        role='checkbox'
         bind:checked={isCompleted}
         on:click={toggleCompleted}
     >
@@ -38,11 +38,13 @@
     <p
         class='text popout contentEditable'
         contenteditable='true'
+        aria-label='Editable todo text'
+        role='textbox'
         on:input={updateText}
     >
         {text}
     </p>
-</div>
+</li>
 
 <style>
 /* Keeps brs from showing up in the to-do */
