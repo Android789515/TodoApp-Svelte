@@ -69,10 +69,11 @@
     }
 
     .filter-options {
+
         list-style: none;
 
-        display: flex;
-        justify-content: space-around;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
 
         padding: .35em .5em;
         margin-bottom: 2em;
