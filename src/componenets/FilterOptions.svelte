@@ -20,21 +20,45 @@
         order = order === SortOrders.ascending ? SortOrders.descending : SortOrders.ascending
         todos.flipOrder()
     }
+
+    interface KeydownEvent {
+        target: HTMLLIElement
+        key: string
+    }
+
+    const handleKeydown = ({ target: filterOption, key }: KeydownEvent) => {
+        const enterKey = 'Enter'
+        if (key === enterKey) {
+            filterOption.click()
+        }
+    }
 </script>
 
 <h4 class='sort-by'>Sort by</h4>
 
 <ul class='unstyledUl filter-options popout' aria-label='Filter options' role='list'>
 
-    <li class='clickable' on:click={() => sort(todos.sortByName)}>
+    <li class='clickable'
+        tabindex='1'
+        on:click={() => sort(todos.sortByName)}
+        on:keydown={handleKeydown}
+    >
         Name
     </li>
 
-    <li class='clickable' on:click={() => sort(todos.sortByDate)}>
+    <li class='clickable'
+        tabindex='2'
+        on:click={() => sort(todos.sortByDate)}
+        on:keydown={handleKeydown}
+    >
         Date
     </li>
 
-    <li class='clickable' on:click={setOrder}>
+    <li class='clickable'
+        tabindex='3'
+        on:click={setOrder}
+        on:keydown={handleKeydown}
+    >
         Order: {order}
     </li>
 </ul>
@@ -48,9 +72,9 @@
         list-style: none;
 
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
 
-        padding: .25em .5em;
+        padding: .35em .5em;
         margin-bottom: 2em;
     }
 </style>

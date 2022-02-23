@@ -12,6 +12,13 @@
         todos.updateTodo(id, TodoKeys.isCompleted, !isCompleted)
     }
 
+    const handleCheckboxKeyDown = ({ key }: { key: string }) => {
+        const enterKey = 'Enter'
+        if (key === enterKey) {
+            toggleCompleted()
+        }
+    }
+
     const updateText = (event: InputEvent) => {
         const { target: { textContent: text } } = event
         todos.updateTodo(id, TodoKeys.text, text)
@@ -44,6 +51,7 @@
         role='checkbox'
         bind:checked={isCompleted}
         on:click={toggleCompleted}
+        on:keydown={handleCheckboxKeyDown}
     >
 
     <p
@@ -98,7 +106,7 @@
 
         color: #fff;
 
-        margin: -.69em 0 0 -.44em;
+        margin: -.5em 0 0 -.4em;
     }
 
     .text {
