@@ -20,7 +20,8 @@ const createStore = () => {
         const newTodo = {
             id: uuid(),
             text,
-            isCompleted: false
+            isCompleted: false,
+            dateCreated: new Date()
         }
         update(todos => [...todos, newTodo])
     }

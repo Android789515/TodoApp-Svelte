@@ -10,7 +10,7 @@
     h1 {
         font-size: 2.2rem;
 
-        margin-bottom: 1.5em;
+        margin-bottom: 1em;
         border-left-width: 4px;
     }
 </style>

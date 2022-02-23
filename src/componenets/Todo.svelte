@@ -17,7 +17,15 @@
         todos.updateTodo(id, todoKeys.text, text)
     }
 
-    const setCursorAtEnd = () => {
+    const setCursorAtEnd = ({ target: todoText }: { target: HTMLParagraphElement }) => {
+        const range = document.createRange()
+        const selection = window.getSelection()
+        const textLength = todoText.textContent.length
+
+        range.setStart(todoText, textLength)
+        range.collapse(true)
+        selection.removeAllRanges()
+        selection.addRange(range)
     }
 
     const afterTwoSeconds = 2400
@@ -45,6 +53,7 @@
         role='textbox'
         on:input={updateText}
         on:focus={setCursorAtEnd}
+        on:pointerdown={setCursorAtEnd}
     >
         {text}
     </p>

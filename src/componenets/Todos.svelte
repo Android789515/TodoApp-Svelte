@@ -21,7 +21,7 @@
     afterUpdate(saveTodos)
 </script>
 
-<ul class='todos' aria-label='Todos' role='list'>
+<ul class='unstyledUl todos' aria-label='Todos' role='list'>
     {#if $todos}
         {#each $todos as { id, text, isCompleted } (id)}
             <Todo {id} {text} {isCompleted} />
